@@ -1,4 +1,9 @@
-<template>1</template>
+<template>
+  <main-wrapper />
+  <my-cart />
+  <my-catalog />
+  <my-catalog-item />
+</template>
 
 <script>
 export default {
@@ -9,7 +14,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang = "scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

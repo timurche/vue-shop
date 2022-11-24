@@ -1,11 +1,11 @@
 <template>
-  <div class="mainWrapper"><h1>Main wrapper</h1></div>
+  <div class="myCart"><h1>Cart</h1></div>
   <slot />
 </template>
 
 <script>
 export default {
-  name: "mainWrapper",
+  name: "myCart",
 };
 </script>
 
