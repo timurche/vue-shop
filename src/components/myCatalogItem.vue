@@ -3,7 +3,11 @@
     <h3><slot /></h3>
   </div>
   <div class="item-details">
-    <img class="img" :alt="product_details.image" />
+    <img
+      class="img"
+      :src="require('../assets/img/' + product_details.image)"
+      :alt="product_details.image"
+    />
     <p class="name">{{ product_details.name }}</p>
     <p class="price">{{ product_details.price }}</p>
     <p class="article">{{ product_details.article }}</p>
@@ -14,7 +18,11 @@
 
 <script>
 export default {
+  data() {
+    return { img_path: "../assets/img/" };
+  },
   name: "myCatalogItem",
+
   props: {
     product_details: {
       type: Object,
