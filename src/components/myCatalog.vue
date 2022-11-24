@@ -72,5 +72,6 @@ export default {
 <style>
 .my-catalog___list {
   display: flex;
+  justify-content: space-between;
 }
 </style>

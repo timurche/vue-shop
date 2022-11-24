@@ -1,6 +1,6 @@
 <template>
   <div class="mainWrapper"><h1>Main wrapper</h1></div>
-  <slot />
+  <my-catalog />
 </template>
 
 <script>

@@ -1,8 +1,5 @@
 <template>
   <main-wrapper />
-  <my-cart />
-  <my-catalog />
-  <my-catalog-item />
 </template>
 
 <script>
