@@ -5,13 +5,20 @@
       :src="image_sample"
       :alt="product_details.image"
     />
-    <p class="name"><strong>{{ product_details.name }}</strong></p>
-    <p class= "price"> <h3> {{ product_details.price }} ₽</h3> </p>
-    <p class="article"><i>Арт.: {{ product_details.article }}</i></p>
-    <div class="item-details--buttons" v-if="product_details.available">
-      <p class="item-details-available" >В наличии</p>
-      <my-button>В корзину</my-button></div>
-    <p class="item-details-not-available" v-else>Продано</p>
+    <p class="name">
+      <strong>{{ product_details.name }}</strong>
+    </p>
+    <p class="price">{{ product_details.price }} ₽</p>
+    <p class="article">
+      <i>Арт.: {{ product_details.article }}</i>
+    </p>
+    <div class="item-details-buttons" v-if="product_details.available">
+      <p class="item-details-available">В наличии</p>
+      <my-button>В корзину</my-button>
+    </div>
+    <div v-else>
+      <p class="item-details-not-available">Продано</p>
+    </div>
   </div>
 </template>
 
