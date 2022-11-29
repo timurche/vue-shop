@@ -5,16 +5,16 @@
       :src="image_sample"
       :alt="product_details.image"
     />
-    <p class="name">{{ product_details.name }}</p>
-    <p class="price">{{ product_details.price }}</p>
-    <p class="article">{{ product_details.article }}</p>
-    <p class="available" v-if="product_details.available">В наличии</p>
-    <p class="available" v-else>Продано</p>
+    <p class="name"><strong>{{ product_details.name }}</strong></p>
+    <p class= "price"><h3>{{ product_details.price }} ₽</h3></p>
+    <p class="article"><i>Арт.: {{ product_details.article }}</i></p>
+    <p class="item-details-available" v-if="product_details.available">В наличии</p>
+    <p class="item-details-available-no" v-else>Продано</p>
   </div>
 </template>
 
 <script>
-import image_sample from "@/assets/img/3.png";
+import image_sample from "@/assets/img/globe.png";
 export default {
   data() {
     return { image_sample };
@@ -34,10 +34,21 @@ export default {
 
 <style lang='scss'>
 .item-details {
-  flex-basis: 30%;
+  flex-basis: 25%;
+  margin: 0 10px 30px 10px;
 
   &-img {
     width: 100px;
+  }
+  &-available {
+    background-color: seagreen;
+    line-height: 30px;
+    border-radius: 10px;
+    color: white;
+  }
+  &-available-no {
+    color: red;
+    line-height: 30px;
   }
 }
 </style>
