@@ -43,9 +43,11 @@ export default {
 
 <style lang='scss'>
 .item-details {
-  flex-basis: 25%;
-  margin: 0 10px 30px 10px;
-  align-items: flex-start;
+  border-radius: 20px;
+  box-shadow: 0 0 8px 0 #8d8d8d;
+  flex-basis: 20%;
+  margin: 0 10px 50px 10px;
+  padding: 20px 10px;
   &-img {
     width: 100px;
   }
