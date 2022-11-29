@@ -3,11 +3,7 @@
     <h3><slot /></h3>
   </div>
   <div class="item-details">
-    <img
-      class="img"
-      :src="require('../assets/img/' + product_details.image)"
-      :alt="product_details.image"
-    />
+    <img class="img" :src="image_sample" :alt="product_details.image" />
     <p class="name">{{ product_details.name }}</p>
     <p class="price">{{ product_details.price }}</p>
     <p class="article">{{ product_details.article }}</p>
@@ -17,9 +13,10 @@
 </template>
 
 <script>
+import image_sample from "@/assets/img/3.png";
 export default {
   data() {
-    return { img_path: "../assets/img/" };
+    return { image_sample };
   },
   name: "myCatalogItem",
 
