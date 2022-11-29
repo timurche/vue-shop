@@ -5,6 +5,7 @@
       v-for="product in products"
       :key="product.article"
       :product_details="product"
+      @send-art="printArticle"
     />
   </div>
 </template>
@@ -65,6 +66,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    printArticle(data) {
+      console.log(data);
+    },
   },
 };
 </script>
