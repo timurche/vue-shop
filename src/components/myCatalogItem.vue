@@ -1,9 +1,10 @@
 <template>
-  <div class="myCatalogItem">
-    <h3><slot /></h3>
-  </div>
   <div class="item-details">
-    <img class="img" :src="image_sample" :alt="product_details.image" />
+    <img
+      class="item-details-img"
+      :src="image_sample"
+      :alt="product_details.image"
+    />
     <p class="name">{{ product_details.name }}</p>
     <p class="price">{{ product_details.price }}</p>
     <p class="article">{{ product_details.article }}</p>
@@ -31,5 +32,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang='scss'>
+.item-details {
+  flex-basis: 30%;
+
+  &-img {
+    width: 100px;
+  }
+}
 </style>
