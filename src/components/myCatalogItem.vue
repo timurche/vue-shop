@@ -6,7 +6,7 @@
       :alt="product_details.image"
     />
     <p class="name"><strong>{{ product_details.name }}</strong></p>
-    <p class= "price"><h3>{{ product_details.price }} ₽</h3></p>
+    <p class= "price"> <h3> {{ product_details.price }} ₽</h3> </p>
     <p class="article"><i>Арт.: {{ product_details.article }}</i></p>
     <p class="item-details-available" v-if="product_details.available">В наличии</p>
     <p class="item-details-available-no" v-else>Продано</p>
