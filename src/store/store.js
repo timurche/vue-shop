@@ -17,7 +17,7 @@ let store = new Vuex.Store({
       })
         .then((products) => {
           commit("setProductsToState", products.data);
-          return products;
+          return products.data;
         })
         .catch((e) => {
           console.log(e);
@@ -26,7 +26,7 @@ let store = new Vuex.Store({
     }
   },
   getters: {
-    PRODUCTS(state) {
+    getProducts(state) {
       return state.products;
     }
   }

@@ -2,7 +2,7 @@
   <div class="myCatalog"><h1>Catalog</h1></div>
   <div class="my-catalog___list">
     <my-catalog-item
-      v-for="product in products"
+      v-for="product in $store.state.products"
       :key="product.article"
       :product_details="product"
       @send-art="printArticle"
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "myCatalog",
   data() {
@@ -22,6 +22,9 @@ export default {
   },
   mounted() {
     this.fetchProducts();
+  },
+  computed: {
+    ...mapGetters(["getProducts"]),
   },
 };
 </script>
