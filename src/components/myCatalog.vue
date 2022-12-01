@@ -5,13 +5,12 @@
       v-for="product in $store.state.products"
       :key="product.article"
       :product_details="product"
-      @send-art="printArticle"
     />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "myCatalog",
   data() {

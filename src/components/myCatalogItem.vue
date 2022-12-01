@@ -14,7 +14,7 @@
     </p>
     <div class="item-details-buttons" v-if="product_details.available">
       <p class="item-details-available">В наличии</p>
-      <my-button @click="sendToParent">В корзину</my-button>
+      <my-button @click="">В корзину</my-button>
     </div>
     <div v-else>
       <p class="item-details-not-available">Продано</p>
@@ -39,9 +39,7 @@ export default {
     },
   },
   methods: {
-    sendToParent() {
-      this.$emit("send-art", this.product_details.article);
-    },
+    sendToParent() {},
   },
 };
 </script>

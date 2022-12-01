@@ -3,7 +3,8 @@ import axios from "axios";
 
 let store = new Vuex.Store({
   state: {
-    products: []
+    products: [],
+    cart: []
   },
   mutations: {
     setProductsToState: (state, products) => {
@@ -28,6 +29,9 @@ let store = new Vuex.Store({
   getters: {
     getProducts(state) {
       return state.products;
+    },
+    getCart(state) {
+      return state.cart;
     }
   }
 });
