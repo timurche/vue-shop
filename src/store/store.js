@@ -9,6 +9,9 @@ let store = new Vuex.Store({
   mutations: {
     setProductsToState: (state, products) => {
       state.products = products;
+    },
+    addProdToCart: (state, product) => {
+      state.cart.push(product);
     }
   },
   actions: {
@@ -24,6 +27,9 @@ let store = new Vuex.Store({
           console.log(e);
           return e;
         });
+    },
+    addToCart({ commit }, product) {
+      commit("addProdToCart", product);
     }
   },
   getters: {

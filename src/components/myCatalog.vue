@@ -17,13 +17,13 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(["fetchProducts"]),
+    ...mapActions(["fetchProducts", "addToCart"]),
   },
   mounted() {
     this.fetchProducts();
   },
   computed: {
-    ...mapGetters(["getProducts"]),
+    ...mapGetters(["getProducts", "getCart"]),
   },
 };
 </script>

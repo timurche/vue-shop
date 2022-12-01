@@ -1,5 +1,5 @@
 <template>
-  <h4>я айтем</h4>
+  <div class="myCartItem"><h1>Cart</h1></div>
 </template>
 
 <script>
