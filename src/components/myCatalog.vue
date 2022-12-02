@@ -5,7 +5,7 @@
       v-for="product in $store.state.products"
       :key="product.article"
       :product_details="product"
-      @addToCart="addToCart"
+      @add-to-cart="addToCartFromStore"
     />
   </div>
 </template>
@@ -18,11 +18,11 @@ export default {
     return {};
   },
   methods: {
-    ...mapActions(["fetchProducts", "addToCart"]),
+    ...mapActions(["fetchProducts", "addToCartFromStore"]),
+    /* addToCart(data) {
+      console.log(data);}, */
   },
-  addToCart() {
-    console.log(this.product);
-  },
+  
 
   mounted() {
     this.fetchProducts();

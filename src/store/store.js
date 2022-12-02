@@ -28,7 +28,7 @@ let store = new Vuex.Store({
           return e;
         });
     },
-    addToCart({ commit }, product) {
+    addToCartFromStore({ commit }, product) {
       commit("addProdToCart", product);
     }
   },

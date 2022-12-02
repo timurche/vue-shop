@@ -1,12 +1,40 @@
 <template>
-  <div class="myCartItem"><h1>Cart</h1></div>
+  <div class="myCartItem">
+    <img
+      class="cart-item-details-img"
+      :src="image_sample"
+      :alt="product_details.image"
+    />
+    <p class="name">
+      <strong>{{ product_details.name }}</strong>
+    </p>
+    <p class="price">{{ product_details.price }} ₽</p>
+  </div>
 </template>
 
 <script>
+import image_sample from "@/assets/img/globe.png";
 export default {
   name: "myCartItem",
+  data(){
+    return { image_sample };
+  },
+  props: {
+    product_details: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
 };
 </script>
 
 <style>
+.myCartItem{ border-radius: 20px;
+  box-shadow: 0 0 8px 0 #8d8d8d;
+  flex-basis: 20%;
+  margin: 0 10px 20px 10px;
+  padding: 20px 10px;}
+.cart-item-details-img{width:50px}
 </style>
