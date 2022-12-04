@@ -11,7 +11,20 @@ let store = new Vuex.Store({
       state.products = products;
     },
     addProdToCart: (state, product) => {
-      state.cart.push(product);
+      if (state.cart.length) {
+        let prodExist = false;
+        state.cart.map((item) => {
+          if (item.article === product.article) {
+            prodExist = true;
+            item.qnt++;
+          }
+        });
+        if (!prodExist) {
+          state.cart.push(product);
+        }
+      } else {
+        state.cart.push(product);
+      }
     },
     deleteProdFromCart: (state, index) => {
       state.cart.splice(index, 1);
