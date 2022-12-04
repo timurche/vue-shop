@@ -1,18 +1,22 @@
 <template>
   <div class="myCart"><h1>Cart</h1></div>
   <div class="myCart__list">
-  <my-cart-item      
-      v-for="product in $store.state.cart"
-      :key="product.article" 
-      :product_details="product"/>
+    <my-cart-item
+      v-for="(product, index) in $store.state.cart"
+      :key="product.article"
+      :product_details="product"
+      @delFromCart="this.deleteProdFromCart(index)"
+    />
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "myCart",
-  methods:{},
+  methods: {
+    ...mapMutations(["deleteProdFromCart"]),
+  },
   computed: {
     ...mapGetters(["getProducts", "getCart"]),
   },
@@ -20,7 +24,8 @@ export default {
 </script>
 
 <style>
-.myCart__list{
+.myCart__list {
   display: flex;
-  flex-wrap: wrap;}
+  flex-wrap: wrap;
+}
 </style>

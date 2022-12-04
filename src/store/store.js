@@ -12,6 +12,9 @@ let store = new Vuex.Store({
     },
     addProdToCart: (state, product) => {
       state.cart.push(product);
+    },
+    deleteProdFromCart: (state, index) => {
+      state.cart.splice(index, 1);
     }
   },
   actions: {
@@ -30,6 +33,9 @@ let store = new Vuex.Store({
     },
     addToCartFromStore({ commit }, product) {
       commit("addProdToCart", product);
+    },
+    deleteFromCart({ commit }, index) {
+      commit("deleteProdFromCart", index);
     }
   },
   getters: {

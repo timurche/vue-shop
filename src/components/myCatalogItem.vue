@@ -8,7 +8,7 @@
     <p class="name">
       <strong>{{ product_details.name }}</strong>
     </p>
-    <p class="price">{{ product_details.price }} ₽</p>
+    <p class="price">{{ Math.round(product_details.price * 100) / 100 }} ₽</p>
     <p class="article">
       <i>Арт.: {{ product_details.article }}</i>
     </p>

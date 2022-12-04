@@ -8,15 +8,18 @@
     <p class="name">
       <strong>{{ product_details.name }}</strong>
     </p>
-    <p class="price">{{ product_details.price }} ₽</p>
+    <p class="price">{{ Math.round(product_details.price * 100) / 100 }} ₽</p>
+    <p class="qnt">Количество:{{ product_details.qnt }}</p>
+    <my-button @click="delFromCart">X</my-button>
   </div>
 </template>
 
 <script>
 import image_sample from "@/assets/img/globe.png";
+import { mapActions, mapMutations } from "vuex";
 export default {
   name: "myCartItem",
-  data(){
+  data() {
     return { image_sample };
   },
   props: {
@@ -27,14 +30,29 @@ export default {
       },
     },
   },
+  mounted() {
+    const cartItemData = this.product_details;
+    cartItemData.qnt = 1;
+  },
+  methods: {
+    delFromCart() {
+      this.$emit("delFromCart");
+    },
+    ...mapActions(["deleteFromCart"]),
+    ...mapMutations(["deleteProdFromCart"]),
+  },
 };
 </script>
 
 <style>
-.myCartItem{ border-radius: 20px;
+.myCartItem {
+  border-radius: 20px;
   box-shadow: 0 0 8px 0 #8d8d8d;
   flex-basis: 20%;
   margin: 0 10px 20px 10px;
-  padding: 20px 10px;}
-.cart-item-details-img{width:50px}
+  padding: 20px 10px;
+}
+.cart-item-details-img {
+  width: 50px;
+}
 </style>
