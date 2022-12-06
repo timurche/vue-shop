@@ -1,17 +1,12 @@
 <template>
-  <div class="mainWrapper"><h1>Main wrapper</h1></div>
-  <my-cart v-if="this.getCart.length" />
-  <p v-else>Корзина пуста</p>
-  <my-catalog />
+  <keep-alive>
+    <router-view> </router-view>
+  </keep-alive>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "mainWrapper",
-  computed: {
-    ...mapGetters(["getCart"]),
-  },
 };
 </script>
 

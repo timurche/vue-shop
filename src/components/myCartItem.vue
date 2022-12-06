@@ -1,5 +1,6 @@
 <template>
   <div class="myCartItem">
+    <my-button class="del-button" @click="delFromCart">X</my-button>
     <img
       class="cart-item-details-img"
       :src="image_sample"
@@ -9,8 +10,12 @@
       <strong>{{ product_details.name }}</strong>
     </p>
     <p class="price">{{ Math.round(product_details.price * 100) / 100 }} ₽</p>
-    <p class="qnt">Количество:{{ product_details.qnt }}</p>
-    <my-button @click="delFromCart">X</my-button>
+    <div>
+      <p>Количество</p>
+      <my-button>-</my-button>
+      <span class="qnt">{{ product_details.qnt }}</span>
+      <my-button>+</my-button>
+    </div>
   </div>
 </template>
 
@@ -54,5 +59,9 @@ export default {
 }
 .cart-item-details-img {
   width: 50px;
+}
+.del-button {
+  float: right;
+  padding: 5px;
 }
 </style>
