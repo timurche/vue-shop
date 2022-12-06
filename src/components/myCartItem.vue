@@ -56,6 +56,7 @@ export default {
   flex-basis: 20%;
   margin: 0 10px 20px 10px;
   padding: 20px 10px;
+  position: relative;
 }
 .cart-item-details-img {
   width: 50px;
@@ -63,5 +64,7 @@ export default {
 .del-button {
   float: right;
   padding: 5px;
+  position: absolute;
+  right: 15px;
 }
 </style>
