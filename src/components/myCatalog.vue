@@ -9,7 +9,7 @@
       v-for="product in $store.state.products"
       :key="product.article"
       :product_details="product"
-      @add-to-cart="addToCartFromStore"
+      @add-to-cart="addToCartFromStore(product)"
     />
   </div>
 </template>

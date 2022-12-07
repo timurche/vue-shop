@@ -5,7 +5,7 @@
   </router-link>
   <div v-if="$store.state.cart.length" class="myCart__list">
     <my-cart-item
-      v-for="(product, index) in $store.state.cart"
+      v-for="(product, index) in getCart"
       :key="product.article"
       :product_details="product"
       @delFromCart="this.deleteProdFromCart(index)"

@@ -12,9 +12,19 @@
     <p class="price">{{ Math.round(product_details.price * 100) / 100 }} ₽</p>
     <div>
       <p>Количество</p>
-      <my-button>-</my-button>
+      <my-button
+        @click="incDecCartItem([product_details, '-'])"
+        class="incDecButton"
+      >
+        &#8211;
+      </my-button>
       <span class="qnt">{{ product_details.qnt }}</span>
-      <my-button>+</my-button>
+      <my-button
+        @click="incDecCartItem([product_details, '+'])"
+        class="incDecButton"
+      >
+        +
+      </my-button>
     </div>
   </div>
 </template>
@@ -25,7 +35,9 @@ import { mapActions, mapMutations } from "vuex";
 export default {
   name: "myCartItem",
   data() {
-    return { image_sample };
+    return {
+      image_sample,
+    };
   },
   props: {
     product_details: {
@@ -40,11 +52,11 @@ export default {
     cartItemData.qnt = 1;
   },
   methods: {
+    ...mapMutations(["incDecCartItem", "setCartItemQnt"]),
+    ...mapActions(["incDecItem"]),
     delFromCart() {
       this.$emit("delFromCart");
     },
-    ...mapActions(["deleteFromCart"]),
-    ...mapMutations(["deleteProdFromCart"]),
   },
 };
 </script>
@@ -63,8 +75,14 @@ export default {
 }
 .del-button {
   float: right;
-  padding: 5px;
+  padding: 5px 10px;
   position: absolute;
   right: 15px;
+}
+.qnt {
+  margin: 0 10px;
+}
+.incDecButton {
+  padding: 10px 15px;
 }
 </style>

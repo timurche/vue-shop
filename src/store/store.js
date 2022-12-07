@@ -28,8 +28,23 @@ let store = new Vuex.Store({
     },
     deleteProdFromCart: (state, index) => {
       state.cart.splice(index, 1);
+    },
+    incDecCartItem: (state, args) => {
+      state.cart.map((item) => {
+        if (item.article === args[0].article) {
+          if (args[1] === "-") {
+            if (item.qnt > 1) {
+              item.qnt = item.qnt - 1;
+            }
+          } else if (args[1] === "+") {
+            item.qnt++;
+          } else {
+          }
+        }
+      });
     }
   },
+
   actions: {
     fetchProducts({ commit }) {
       return axios("http://localhost:3000/products", {
@@ -49,6 +64,9 @@ let store = new Vuex.Store({
     },
     deleteFromCart({ commit }, index) {
       commit("deleteProdFromCart", index);
+    },
+    incDecItem({ commit }, product, znak) {
+      commit("incDecCartItem", { product, znak });
     }
   },
   getters: {
