@@ -1,5 +1,6 @@
 <template>
   <div class="myCatalog"><h1>Catalog</h1></div>
+  <my-select></my-select>
   <router-link :to="{ name: 'Cart' }"
     ><div class="my-catalog___to-cart">Товаров: {{ getCart.length }}</div>
   </router-link>

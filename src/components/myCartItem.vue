@@ -47,10 +47,7 @@ export default {
       },
     },
   },
-  mounted() {
-    const cartItemData = this.product_details;
-    cartItemData.qnt = 1;
-  },
+
   methods: {
     ...mapMutations(["incDecCartItem", "setCartItemQnt"]),
     ...mapActions(["incDecItem"]),

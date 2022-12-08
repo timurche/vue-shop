@@ -43,6 +43,10 @@ export default {
       this.$emit("add-to-cart");
     },
   },
+  mounted() {
+    const cartItemData = this.product_details;
+    cartItemData.qnt = 1;
+  },
 };
 </script>
 
