@@ -4,11 +4,13 @@ import axios from "axios";
 let store = new Vuex.Store({
   state: {
     products: [],
-    cart: []
+    cart: [],
+    sorted_products: []
   },
   mutations: {
     setProductsToState: (state, products) => {
       state.products = products;
+      state.sorted_products = products;
     },
     addProdToCart: (state, product) => {
       if (state.cart.length) {
@@ -42,6 +44,18 @@ let store = new Vuex.Store({
           }
         }
       });
+    },
+    sortProdsByCategory: (state, filterOption) => {
+      state.sorted_products = [];
+      state.products.map((product) => {
+        if (product.category === filterOption.value) {
+          state.sorted_products.push(product);
+        } else {
+          if (filterOption.value === "ALL") {
+            state.sorted_products.push(product);
+          }
+        }
+      });
     }
   },
 
@@ -59,6 +73,10 @@ let store = new Vuex.Store({
           return e;
         });
     },
+    sortByCategory({ commit }, filterOption) {
+      commit("sortProdsByCategory", filterOption);
+      console.log(filterOption.value);
+    },
     addToCartFromStore({ commit }, product) {
       commit("addProdToCart", product);
     },
@@ -75,6 +93,9 @@ let store = new Vuex.Store({
     },
     getCart(state) {
       return state.cart;
+    },
+    getSortedProducts(state) {
+      return state.sorted_products;
     }
   }
 });

@@ -1,13 +1,17 @@
 <template>
   <div class="myCatalog"><h1>Catalog</h1></div>
-  <my-select></my-select>
+  <my-select
+    :optionsList="optionsList"
+    :selected="selected.name"
+    @select="sortByCategoryNow"
+  ></my-select>
   <router-link :to="{ name: 'Cart' }"
     ><div class="my-catalog___to-cart">Товаров: {{ getCart.length }}</div>
   </router-link>
 
   <div class="my-catalog___list">
     <my-catalog-item
-      v-for="product in $store.state.products"
+      v-for="product in getSortedProducts"
       :key="product.article"
       :product_details="product"
       @add-to-cart="addToCartFromStore(product)"
@@ -20,19 +24,28 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "myCatalog",
   data() {
-    return {};
+    return {
+      optionsList: [
+        { name: "Для мужчин", value: "Мужские" },
+        { name: "Для женщин", value: "Женские" },
+        { name: "Для всех", value: "ALL" },
+      ],
+      selected: { name: "Выбери категорию", value: "ALL" },
+    };
   },
   methods: {
-    ...mapActions(["fetchProducts", "addToCartFromStore"]),
-    /* addToCart(data) {
-      console.log(data);}, */
+    ...mapActions(["fetchProducts", "addToCartFromStore", "sortByCategory"]),
+    sortByCategoryNow(selected) {
+      this.selected.name = selected.name;
+      this.sortByCategory(selected);
+    },
   },
 
   mounted() {
     this.fetchProducts();
   },
   computed: {
-    ...mapGetters(["getProducts", "getCart"]),
+    ...mapGetters(["getProducts", "getCart", "getSortedProducts"]),
   },
 };
 </script>

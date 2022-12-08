@@ -10,7 +10,7 @@
     </p>
     <p class="price">{{ Math.round(product_details.price * 100) / 100 }} ₽</p>
     <p class="article">
-      <i>Арт.: {{ product_details.article }}</i>
+      <i>Арт.: {{ product_details.article }}, {{ product_details.category }}</i>
     </p>
     <div class="item-details-buttons" v-if="product_details.available">
       <p class="item-details-available">В наличии</p>
@@ -54,7 +54,7 @@ export default {
 .item-details {
   border-radius: 20px;
   box-shadow: 0 0 8px 0 #8d8d8d;
-  flex-basis: 20%;
+  flex-basis: 25%;
   margin: 0 10px 50px 10px;
   padding: 20px 10px;
   &-img {
