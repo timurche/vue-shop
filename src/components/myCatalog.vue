@@ -13,7 +13,7 @@
       <input
         type="range"
         min="0"
-        max="999"
+        max="10000"
         step="10"
         v-model.number="minPrice"
         @change="sliding"
@@ -21,7 +21,7 @@
       <input
         type="range"
         min="0"
-        max="1000"
+        max="10000"
         step="10"
         v-model.number="maxPrice"
         @change="sliding"
@@ -63,7 +63,7 @@ export default {
       ],
       selected: { name: "Выбери категорию", value: "ALL" },
       minPrice: 0,
-      maxPrice: 1000,
+      maxPrice: 10000,
     };
   },
   methods: {
@@ -76,8 +76,11 @@ export default {
         this.minPrice = tmp;
       }
     },
-    doFilterProdsNow() {
-      this.filterProdsNow(this.selected, this.minPrice, this.maxPrice);
+    doFilterProdsNow(selected, minPrice, maxPrice) {
+      this.selected = selected;
+      minPrice = this.minPrice;
+      maxPrice = this.maxPrice;
+      this.filterProdsNow({ selected, minPrice, maxPrice });
     },
   },
 

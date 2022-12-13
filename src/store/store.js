@@ -48,19 +48,22 @@ let store = new Vuex.Store({
     filteringProds: (state, filterParams) => {
       state.sorted_products = [];
       state.products.map((product) => {
-        if (product.category === filterParams.categoryOption.value) {
-          state.sorted_products.push(product);
-        } else {
-          if (filterParams.categoryOption.value === "ALL") {
-            state.sorted_products.push(product);
-          }
-        }
         if (
+          product.category === filterParams.selected.value &&
           product.price >= filterParams.minPrice &&
           product.price <= filterParams.maxPrice
         ) {
           state.sorted_products.push(product);
+        } else {
+          if (
+            filterParams.selected.value === "ALL" &&
+            product.price >= filterParams.minPrice &&
+            product.price <= filterParams.maxPrice
+          ) {
+            state.sorted_products.push(product);
+          }
         }
+        console.log(filterParams);
       });
     }
   },
@@ -79,8 +82,9 @@ let store = new Vuex.Store({
           return e;
         });
     },
-    filterProdsNow({ commit }, categoryOption, minPrice, maxPrice) {
-      commit("filteringProds", { categoryOption, minPrice, maxPrice });
+    filterProdsNow({ commit }, filterParams) {
+      commit("filteringProds", filterParams);
+      console.log(filterParams);
     },
     addToCartFromStore({ commit }, product) {
       commit("addProdToCart", product);
