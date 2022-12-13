@@ -15,7 +15,7 @@
   <hr />
   <div class="my-cart___total">
     <p>Total:</p>
-    <p>{{ Math.round(this.cartTotal * 100) / 100 }}</p>
+    <p>{{ this.getTotal }}</p>
   </div>
 </template>
 
@@ -27,14 +27,14 @@ export default {
     ...mapMutations(["deleteProdFromCart"]),
   },
   computed: {
-    ...mapGetters(["getProducts", "getCart"]),
-    cartTotal() {
+    ...mapGetters(["getProducts", "getCart", "getTotal"]),
+    /* cartTotal() {
       let totalSum = 0;
       this.getCart.forEach((element) => {
         totalSum = totalSum + element.price * element.qnt;
       });
       return totalSum;
-    },
+    }, */
   },
 };
 </script>

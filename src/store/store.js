@@ -45,15 +45,21 @@ let store = new Vuex.Store({
         }
       });
     },
-    sortProdsByCategory: (state, filterOption) => {
+    filteringProds: (state, filterParams) => {
       state.sorted_products = [];
       state.products.map((product) => {
-        if (product.category === filterOption.value) {
+        if (product.category === filterParams.categoryOption.value) {
           state.sorted_products.push(product);
         } else {
-          if (filterOption.value === "ALL") {
+          if (filterParams.categoryOption.value === "ALL") {
             state.sorted_products.push(product);
           }
+        }
+        if (
+          product.price >= filterParams.minPrice &&
+          product.price <= filterParams.maxPrice
+        ) {
+          state.sorted_products.push(product);
         }
       });
     }
@@ -73,9 +79,8 @@ let store = new Vuex.Store({
           return e;
         });
     },
-    sortByCategory({ commit }, filterOption) {
-      commit("sortProdsByCategory", filterOption);
-      console.log(filterOption.value);
+    filterProdsNow({ commit }, categoryOption, minPrice, maxPrice) {
+      commit("filteringProds", { categoryOption, minPrice, maxPrice });
     },
     addToCartFromStore({ commit }, product) {
       commit("addProdToCart", product);
@@ -96,6 +101,14 @@ let store = new Vuex.Store({
     },
     getSortedProducts(state) {
       return state.sorted_products;
+    },
+    getTotal(state) {
+      let totalSum = 0;
+      state.cart.forEach((element) => {
+        totalSum =
+          Math.round((totalSum + element.price * element.qnt) * 100) / 100;
+      });
+      return totalSum;
     }
   }
 });
